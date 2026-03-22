@@ -1,4 +1,4 @@
-markdown# Library Book Tracking API
+## Library Book Tracking API
 A simple HTTP API for tracking library books, members, and checkouts. Built with ASP.NET Core (.NET 10) using an EF Core in-memory database.
 ## Endpoints
 | Method | Route                              | Description                                      |
@@ -8,12 +8,13 @@ A simple HTTP API for tracking library books, members, and checkouts. Built with
 | POST   | `/api/checkouts`                    | Check out a book to a member                      |
 ## Running the App
 ### Visual Studio 2026
-Open `Library.sln`, set `Library.Api` as the startup project, and hit **F5**. The browser should automatically open the Scalar UI at `/scalar/v1`, you can use it to test all endpoints directly without needing Postman or similar tools.
+Open `Library.sln`, set `Library.Api` as the startup project, with Https and and hit **F5**. The browser should automatically open the Scalar UI at `/scalar/v1`, you can use it to test all endpoints directly
 ### VS Code / CLI
 ```bash
 cd Library/Library.Api
 dotnet run
 ```
+Go to `https://localhost:7176/scalar/v1` in browser (or see console output for https host port if different)
 ## Manually Testing with Scalar
 Once the app runs, it should open the browser at `/scalar/v1` which you can use to test out endpoints without the hassle of setting up Postman etc.
 
@@ -40,8 +41,8 @@ Open **Test Explorer** (`Ctrl+E, T`) and click **Run All**.
 cd Library/Library.Tests
 dotnet test
 ```
-## Assumptions
-- In-memory database with pre-seeded books, members, and a couple of checkouts, no persistence across restarts.
-- ISBNs are kept short (e.g. `"1"`, `"2"`) for easier manual testing.
-- No return-book endpoint was implemented as the spec only asked for checkout.
-- Test coverage prioritises the happy paths and key integration flows given the time constr
+## Extra notes
+- I usually do .NET projects these days using .NET Aspire as it is super easy to spin up containers for things like databases adn you don't have to mess around with docker files / docker compose yaml much
+- Chose not to use it for this in case tester doesn't have time to install docker and Aspire is still quite young so might be slower to read compared to a project built off the ASP.NET Core Empty template which will be familiar to a lot
+- See my other public repo where I am using Aspire to orchestrate an app and host it with Azure Container Apps + PostgreSQL Flexible Server
+  [.net-aspire-next.js-ai-product-tracker](https://github.com/ynr2321/.net-aspire-next.js-ai-product-tracker)
