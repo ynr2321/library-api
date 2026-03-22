@@ -20,10 +20,10 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Restore
-        run: dotnet restore Library/Library.sln
+        run: dotnet restore Library/Library.slnx
 
       - name: Build
-        run: dotnet build Library/Library.sln --no-restore --configuration Release
+        run: dotnet build Library/Library.slnx --no-restore --configuration Release
 
       - name: Test
-        run: dotnet test Library/Library.sln --no-build --configuration Release --verbosity normal
+        run: dotnet test Library/Library.slnx --no-build --configuration Release --verbosity normal
